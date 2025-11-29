@@ -74,8 +74,41 @@ export default function Editor({ roomId }: { roomId: string }) {
     }
   };
 
-  return (
+    return (
     <div style={{ maxWidth: "1200px", margin: "20px auto" }}>
+
+      {/* Room ID Display + Copy Button */}
+      <div
+        style={{
+          marginBottom: "15px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          gap: "10px",
+        }}
+      >
+        <div style={{ fontSize: "18px", fontWeight: "600" }}>
+          Room ID: <span style={{ color: "#444" }}>{roomId}</span>
+        </div>
+
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(roomId);
+            alert("Room ID copied!");
+          }}
+          style={{
+            padding: "6px 10px",
+            fontSize: "14px",
+            cursor: "pointer",
+            border: "1px solid #ccc",
+            borderRadius: "4px",
+            background: "#f1f1f1",
+          }}
+        >
+          Copy
+        </button>
+      </div>
+
       {/* Suggestion button */}
       <div style={{ marginBottom: "10px" }}>
         <button

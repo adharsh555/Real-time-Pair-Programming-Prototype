@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { API_BASE } from "../config";
 
 export default function useWebSocket(
   roomId: string | null,
@@ -9,10 +10,12 @@ export default function useWebSocket(
   useEffect(() => {
     if (!roomId) return;
 
-    // Always connect directly to backend running on host
-    const wsUrl = `ws://localhost:8000/ws/${roomId}`;
+    // Convert API_BASE (https) → websocket URL (wss)
+    const wsBase = API_BASE.replace("http", "ws");
+    const wsUrl = `${wsBase}/ws/${roomId}`;
 
     console.log("Connecting to WebSocket:", wsUrl);
+
     const ws = new WebSocket(wsUrl);
     wsRef.current = ws;
 

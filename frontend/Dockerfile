@@ -1,5 +1,4 @@
-# ---------- Build Stage ----------
-FROM node:22-slim AS builder
+FROM node:22-slim
 
 WORKDIR /app
 
@@ -7,13 +6,7 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-RUN npm run build
 
-# ---------- Production Stage ----------
-FROM nginx:stable-alpine
+EXPOSE 5173
 
-# Copy built frontend files to Nginx
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

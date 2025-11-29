@@ -6,21 +6,22 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Install OS-level dependencies (required for asyncpg / psycopg)
+# Install OS-level dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies first (cache friendly)
+# Install Python dependencies first
 COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the actual application
+# Copy app
 COPY ./app ./app
 
+# Railway sets PORT dynamically → expose for local testing only
 EXPOSE 8000
 
-# Start FastAPI with Uvicorn
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use Railway's PORT automatically
+CMD ["bash", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]

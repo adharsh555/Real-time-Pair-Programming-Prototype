@@ -9,7 +9,8 @@ app = FastAPI(title="Real-time Pair Programming Prototype")
 origins = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "https://wonderful-growth-production.up.railway.app",   # <-- ADD THIS
+    "https://wonderful-growth-production.up.railway.app",
+    "https://live-pair-program.up.railway.app",   # <-- ADD THIS
 ]
 
 app.add_middleware(

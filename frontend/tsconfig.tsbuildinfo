@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/config.ts","./src/main.tsx","./src/store.ts","./src/components/editor.tsx","./src/features/room/roomslice.ts","./src/hooks/reduxhooks.ts","./src/hooks/usewebsocket.tsx"],"version":"5.9.3"}

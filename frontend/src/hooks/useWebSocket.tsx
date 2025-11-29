@@ -10,8 +10,8 @@ export default function useWebSocket(
   useEffect(() => {
     if (!roomId) return;
 
-    // Convert API_BASE (https) → websocket URL (wss)
-    const wsBase = API_BASE.replace("http", "ws");
+    // Convert backend URL http → ws
+    const wsBase = API_BASE.replace("https", "wss").replace("http", "ws");
     const wsUrl = `${wsBase}/ws/${roomId}`;
 
     console.log("Connecting to WebSocket:", wsUrl);

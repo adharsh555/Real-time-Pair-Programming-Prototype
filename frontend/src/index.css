@@ -1,0 +1,51 @@
+/* Global clean professional look */
+
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  color: #222;
+  background: #ffffff;
+}
+
+/* Reset defaults */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Headings */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Buttons */
+button {
+  padding: 6px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #ececec;
+}
+
+/* Input fields */
+input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+/* Remove default textarea outline color */
+textarea:focus,
+input:focus {
+  outline: 2px solid #c5c5c5;
+}

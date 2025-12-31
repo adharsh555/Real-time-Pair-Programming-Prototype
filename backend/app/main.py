@@ -24,6 +24,10 @@ app.add_middleware(
 )
 
 # Routers
+@app.get("/")
+async def health_check():
+    return {"status": "ok", "message": "SyncCode API is running"}
+
 app.include_router(rooms.router)
 app.include_router(autocomplete.router)
 app.include_router(ws.router)

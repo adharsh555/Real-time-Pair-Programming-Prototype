@@ -1,1 +1,1 @@
-web: npm run build && npx serve -s dist -l 5173
+web: npx serve -s dist -l $PORT

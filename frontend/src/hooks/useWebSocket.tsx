@@ -3,6 +3,7 @@ import { API_BASE } from "../config";
 
 export default function useWebSocket(
   roomId: string | null,
+  name: string,
   onMessage: (data: any) => void
 ) {
   const wsRef = useRef<WebSocket | null>(null);
@@ -12,7 +13,7 @@ export default function useWebSocket(
 
     // Convert backend URL http → ws
     const wsBase = API_BASE.replace("https", "wss").replace("http", "ws");
-    const wsUrl = `${wsBase}/ws/${roomId}`;
+    const wsUrl = `${wsBase}/ws/${roomId}?name=${encodeURIComponent(name)}`;
 
     console.log("Connecting to WebSocket:", wsUrl);
 
@@ -35,7 +36,7 @@ export default function useWebSocket(
     return () => {
       ws.close();
     };
-  }, [roomId]);
+  }, [roomId, name]);
 
   const send = (msg: any) => {
     if (wsRef.current?.readyState === WebSocket.OPEN) {

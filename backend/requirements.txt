@@ -4,3 +4,4 @@ sqlmodel
 asyncpg
 sqlalchemy
 pydantic
+aiosqlite
